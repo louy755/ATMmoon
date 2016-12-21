@@ -1,0 +1,29 @@
+<%= form_for(@account) do |f| %>
+  <% if @account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
+      <ul>
+        <% @account.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-3 col-md-offset-4 text-center " style="margin-top:90px">
+      <h3><strong>Your initial balance is <%= number_to_currency( @account.balance)%></strong></h3></br>
+      <div class="field">
+        <%= f.hidden_field :balance %><br>
+      </div>
+      <div class="field">
+        <%= f.hidden_field :user_id,value: current_user.id %><br>
+      </div>
+      <div class="field">
+        <%= f.hidden_field :active,value: true %><br>
+      </div>
+      <div class="actions">
+        <%= f.submit 'Create', class:"btn btn-info btn-lg"%>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,35 @@
+<%= form_for(@transaction) do |f| %>
+
+
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :merchent_name %><br>
+    <%= f.text_field :merchent_name %>
+  </div>
+  <div class="field">
+    <%= f.label :debit %><br>
+    <%= f.check_box :debit %>
+  </div><hr>
+  
+   
+<div class="field">
+  <%=f.hidden_field :account_id, value: current_user.account.id %>
+</div>
+
+
+
+<div class="field">
+  
+</div>
+
+
+<div class="actions">
+  <%= f.submit %>
+</div>
+
+
+
+<% end %>

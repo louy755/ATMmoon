@@ -1,0 +1,1 @@
+json.partial! "atm_maches/atm_mach", atm_mach: @atm_mach

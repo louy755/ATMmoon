@@ -1,0 +1,1 @@
+json.array! @atm_maches, partial: 'atm_maches/atm_mach', as: :atm_mach

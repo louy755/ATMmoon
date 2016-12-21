@@ -1,0 +1,31 @@
+<hr>
+<center><h2> ATMS Available Locations </h2>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>ATM #</th>
+      <th>Name</th>
+      <th>State</th>
+      <th>City</th>
+      <th>Zip code</th>
+      <th>Street</th>
+      <th>ATM Action</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @atm_maches.each do |atm_mach| %>
+      <tr>
+      <td><%= atm_mach.id %></td>
+      <td><%= atm_mach.name %></td>
+      <td><%= atm_mach.state %></td>
+      <td><%= atm_mach.city %></td>
+      <td><%= atm_mach.zip_code %></td>
+      <td><%= atm_mach.street %></td>
+      <td><%= link_to 'Start' , atm_mach , class:"btn btn-info"%></td></center
+     
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>

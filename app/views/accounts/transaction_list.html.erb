@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-12 col-md-offset-0 ">
+    <center><br><h3>Transaction History Report</h3><br>
+    <p><%=link_to "Download PDF Copy ", transaction_list_account_path(format: 'pdf'),class:"btn btn-info "%></p></center>
+    <table  class="table table-bordered table-responsive text-center">
+      <% @transactions.recent.group_by(&:atm_mach_id).sort.each do |atm,i| %>
+        <tr ><td colspan='5' class="info text-left" style="font-weight:900" >  <center> ATM Number: <%=atm%></center></td></tr>
+        <tbody>
+          <tr style="font-weight:bold">
+
+            <td>Tran No.</td>
+            <td> Amount</td>
+            <td> Tran Type</td>
+            <td> Time </td>
+          </tr>
+          <% i.each do|j| %>
+            <tr>
+              <td>
+                <%= j.id%>
+              </td>
+              <td>
+                <%= number_to_currency(j.amount) %>
+              </td>
+              <td>
+                <% if j.debit == true %>
+                  <p style="color:blue"> Debit</p>
+                <%else%>
+                  <p  style="color:red"> Withdrawal</p>
+                <%end%>
+              </td>
+              <td>
+                <% t=j.created_at%>
+                <%= t.strftime("%I:%M:%S %p --- %m/%d/%Y")%>
+              </td>
+            </tr> 
+          <%end%>
+        </tbody>
+      <%end%>
+    </table>
+    <center><%=link_to 'Back', atm_mach_path(session[:atm_no]),class:"btn btn-danger btn-lg"%></center>
+    <br>
+  </div>
+</div>

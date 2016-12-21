@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<p><strong>Balance:</strong><%= @account.balance %></p>
+<p><strong>Account number:</strong><%= @account.account_number %></p>
+<p><strong>User:</strong><%= @account.user_id %></p>
+
+
+<p><strong>Active:</strong>
+<!-- changing the true to OPEN-->
+<% if  @account.active == true   %><strong>Open</strong><% else %><strong>Closed</strong><%end%><!-- End of the changing -->
+</p>
+
+
+<%= link_to 'New transaction' ,  new_transaction_path%> |<%= link_to 'Close the account' %>
+</br>
+
+<!--  account details  -->
+<table>
+    <tr>
+        <td><strong>Account balance </strong><%= @account.balance %></td>
+        <td> <strong>Account creation Date</strong><%= @account.created_at %></td>
+        <td><strong>Account last update</strong><%= @account.updated_at %></td>
+    </tr>
+</table><hr><!-- End Account details -->
+
+
+
+<!-- Start  transactions Log -->
+<strong> Transactions List</strong>
+
+<p>
+<table>
+      <tr >
+      <td>Amount</td>
+      <td>Merchent name</td>
+      <td>Transaction Time</td>
+      <td>Transaction Type</td>
+    </tr>
+  
+<% @account.transactions.each do |count|%>
+  <tr>
+      <td><%= count.amount%></td>
+
+      <td><%= count.created_at%></td>
+      <td><%= count.debit%></td>
+  </tr>
+<% end %>
+  
+</table>
+</p><!-- End of transactions Log  -->
+
+
+
+
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>
